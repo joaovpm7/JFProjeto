@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import modelo.Produto;
 import util.BancoDados;
@@ -81,8 +82,8 @@ public class ProdutoControle {
             sql += " SET nome = ?, ";
             sql += " descricao = ?, ";
             sql += " preco = ?, ";
-            sql += " idcategoria = ?, ";
-            sql += " nomecategoria = ? ";
+            sql += " id_categoria = ?, ";
+            sql += " nome_categoria = ? ";
             sql += " WHERE id = ?; ";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, p.getNome());
@@ -107,9 +108,32 @@ public class ProdutoControle {
     public static boolean Excluir(long idContato) {
         return true;
     }
+    
+    public static List<Produto> ListarProdutos() {
+        try {
 
-    public List<Produto> ListarTodos() {
-        return null;
+            Connection conn = BancoDados.getConexao();
+            String sql = "SELECT * FROM tb_produto; ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            List<Produto> lista = new ArrayList();
+            final ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Produto p = new Produto();
+                p.setId(rs.getInt("id"));
+                p.setNome(rs.getString("nome"));
+                p.setDescricao(rs.getString("descricao"));
+                p.setPreco(Double.parseDouble(rs.getString("preco")));
+                p.setNomeCategoria(rs.getString("nome_categoria"));
+                p.setDataCadastro(rs.getDate("data_cadastro")); //dd/mm/yyy H:i)
+                lista.add(p);
+            }
+            return lista;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
-
+    
 }

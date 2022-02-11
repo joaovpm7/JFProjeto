@@ -5,6 +5,7 @@
  */
 package tela;
 import controle.CategoriaControle;
+import javax.swing.JOptionPane;
 import modelo.Categoria;
 
 /**
@@ -44,6 +45,11 @@ public class FormCadCategoria extends javax.swing.JFrame {
         jLabel1.setText("ID:");
 
         btnBuscar.setText("buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Nome:");
 
@@ -114,7 +120,9 @@ public class FormCadCategoria extends javax.swing.JFrame {
             ct.setNomeCategoria(txtNome.getText());
             ct.setDescricao(txtDescCategoria.getText());
             boolean cadastrou = CategoriaControle.Cadastrar(ct);
-            
+            if (cadastrou) {
+                JOptionPane.showMessageDialog(this, "Cadastro Efetuado com sucesso!","OK", JOptionPane.INFORMATION_MESSAGE);
+            }
         } else {
             ct.setNomeCategoria(txtNome.getText());
             ct.setDescricao(txtDescCategoria.getText());
@@ -123,6 +131,10 @@ public class FormCadCategoria extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments

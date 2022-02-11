@@ -59,11 +59,26 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(mnCadastrar);
 
         msListar.setText("Listar");
+        msListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                msListarActionPerformed(evt);
+            }
+        });
 
         mniListarProdutos.setText("Listar Produtos");
+        mniListarProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniListarProdutosActionPerformed(evt);
+            }
+        });
         msListar.add(mniListarProdutos);
 
         mniListarCategorias.setText("Listar Categorias");
+        mniListarCategorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniListarCategoriasActionPerformed(evt);
+            }
+        });
         msListar.add(mniListarCategorias);
 
         jMenuBar1.add(msListar);
@@ -97,6 +112,20 @@ public class FormMenuPrincipal extends javax.swing.JFrame {
         FormCadCategoria form = new FormCadCategoria();
         form.setVisible(true);
     }//GEN-LAST:event_mniCadastrarCategoriaActionPerformed
+
+    private void mniListarCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListarCategoriasActionPerformed
+        FormListaCategoria formcat = new FormListaCategoria();
+        formcat.setVisible(true);
+    }//GEN-LAST:event_mniListarCategoriasActionPerformed
+
+    private void mniListarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListarProdutosActionPerformed
+        FormListaProduto formp = new FormListaProduto();
+        formp.setVisible(true);
+    }//GEN-LAST:event_mniListarProdutosActionPerformed
+
+    private void msListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_msListarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_msListarActionPerformed
 
     /**
      * @param args the command line arguments

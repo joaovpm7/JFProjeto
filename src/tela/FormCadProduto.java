@@ -98,18 +98,23 @@ public class FormCadProduto extends javax.swing.JFrame {
                             .addComponent(txtID)
                             .addGap(26, 26, 26)
                             .addComponent(btnBuscar))
-                        .addComponent(jLabel4)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel3)
                             .addGap(18, 18, 18)
                             .addComponent(txtProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel5)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnCadastrar)
-                                .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jLabel4)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
                 .addContainerGap(32, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(119, Short.MAX_VALUE)
+                .addComponent(btnCadastrar)
+                .addGap(111, 111, 111))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,8 +185,8 @@ public class FormCadProduto extends javax.swing.JFrame {
                         "Erro", JOptionPane.ERROR);
             }
         } else {
+            p.setId(Long.parseLong(txtID.getText())); //pegar o id que eu digitei e informar o ID do produto.
             boolean alterou = ProdutoControle.Atualizar(p);
-           
             if (alterou) {
                 JOptionPane.showMessageDialog(this, "Alteração Efetuada com sucesso!", "OK", JOptionPane.INFORMATION_MESSAGE);
             } else {
@@ -211,7 +216,8 @@ public class FormCadProduto extends javax.swing.JFrame {
             for (int i = 0; i < total; i++) { //percorrer todo o combobox
                 Categoria itemCombo = (Categoria) cbxCategoria.getItemAt(i); //converter o id procurado para categoria.
                 if (cat.getId() == itemCombo.getId()) { //se for o mesmo id que estou procurando
-                    cbxCategoria.setSelectedIndex(i);//setar a categoria no combobox   
+                    cbxCategoria.setSelectedIndex(i);//setar a categoria no combobox
+                    btnCadastrar.setText("Alterar");
                 }
             }
         } else {
