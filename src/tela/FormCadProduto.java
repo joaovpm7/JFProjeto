@@ -181,6 +181,7 @@ public class FormCadProduto extends javax.swing.JFrame {
             }
         } else {
             boolean alterou = ProdutoControle.Atualizar(p);
+           
             if (alterou) {
                 JOptionPane.showMessageDialog(this, "Alteração Efetuada com sucesso!", "OK", JOptionPane.INFORMATION_MESSAGE);
             } else {
@@ -210,7 +211,7 @@ public class FormCadProduto extends javax.swing.JFrame {
             for (int i = 0; i < total; i++) { //percorrer todo o combobox
                 Categoria itemCombo = (Categoria) cbxCategoria.getItemAt(i); //converter o id procurado para categoria.
                 if (cat.getId() == itemCombo.getId()) { //se for o mesmo id que estou procurando
-                    cbxCategoria.setSelectedIndex(i);//setar a categoria no combobox
+                    cbxCategoria.setSelectedIndex(i);//setar a categoria no combobox   
                 }
             }
         } else {
